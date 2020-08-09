@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { Bin2decComponent } from './bin2dec/bin2dec.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Bin2decComponent
   ],
   imports: [
     BrowserModule,

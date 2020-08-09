@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "jgs-devflorinpop17"
+    }
+  },
+  "defaultProject": "jgs-devflorinpop17",
+  "cli": {
+    "analytics": "5aee77fd-3382-43e5-8e39-942640d591c7"
+  }
 }
