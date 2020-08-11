@@ -1,6 +1,5 @@
-<div [ngStyle]="getBorderRadius()" class="borders"></div>
-
 <div [formGroup]="bordersForm">
+    <div [ngStyle]="getBorderRadius()" class="borders"></div>
     <div><input (input)="setBorderTopLeftRadius()" formControlName="borderRadiusTopLeft" type="tel"
             placeholder="top left"></div>
     <div><input (input)="setBorderTopRightRadius()" formControlName="borderRadiusTopRight" type="tel"
@@ -11,4 +10,4 @@
             placeholder="bottom left"></div>
 </div>
 
-<button (click)="test()">Test</button>
+<input type="range" >

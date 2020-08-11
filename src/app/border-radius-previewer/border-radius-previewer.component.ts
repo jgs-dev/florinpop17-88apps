@@ -32,12 +32,9 @@ export class BorderRadiusPreviewerComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  test() {
-    console.log(this.borderRadius)
-  }
 
   getBorderRadius(): object {
-    return {"border-radius":this.borderRadius.topLeft + "px " + this.borderRadius.topRight + "px " + this.borderRadius.bottomRight + "px " + this.borderRadius.bottomLeft + "px"}
+    return { "border-radius": `${this.borderRadius.topLeft}px ${this.borderRadius.topRight}px ${this.borderRadius.bottomRight}px ${this.borderRadius.bottomLeft}px` }
   }
 
   setBorderTopLeftRadius() {
