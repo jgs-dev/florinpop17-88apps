@@ -1,1 +1,25 @@
-<p>bin2dec works!</p>
+<h1 class="title">Bin2Dec</h1>
+
+<div>
+    <label>Binary Number
+        <input (change)="verifyConvertion()" type="tel" [formControl]="binaryNumber">
+    </label>
+</div>
+
+<div *ngIf="binaryNumber.invalid && (binaryNumber.dirty || binaryNumber.touched)">
+    <div *ngIf="binaryNumber.errors.pattern">
+        <label>Input must only contain 0s and 1s</label>
+    </div>
+    <div *ngIf="binaryNumber.errors.maxlength">
+        <label>Max length of 8</label>
+    </div>
+    <div *ngIf="binaryNumber.errors.required">
+        <label>Required</label>
+    </div>
+</div>
+
+<div>
+    <label>
+        Decimal Convertion: {{decimalNumber}}
+    </label>
+</div>
