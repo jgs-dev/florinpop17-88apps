@@ -7,7 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
 
   { path: 'bin2dec', component: Bin2decComponent },
-  { path: 'bordr-radius-previewer', component: BorderRadiusPreviewerComponent },
+  { path: 'border-radius-previewer', component: BorderRadiusPreviewerComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent }
 ];
