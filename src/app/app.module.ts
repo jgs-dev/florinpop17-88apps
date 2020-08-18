@@ -9,8 +9,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms"
 import { Bin2decComponent } from './bin2dec/bin2dec.component';
 import { BorderRadiusPreviewerComponent } from './border-radius-previewer/border-radius-previewer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from "@angular/material/slider";
+
 import { HomeComponent } from './home/home.component'
+import { BorderRadiusPreviewerModule } from "./border-radius-previewer/border-radius-previewer.module"
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { HomeComponent } from './home/home.component'
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    BorderRadiusPreviewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
