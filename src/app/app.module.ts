@@ -1,3 +1,7 @@
+// Angular Material imports
+import {ClipboardModule} from '@angular/cdk/clipboard';
+//----------------------------------------------------
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -13,12 +17,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component'
 import { BorderRadiusPreviewerModule } from "./border-radius-previewer/border-radius-previewer.module"
 
+import { CalculatorComponent } from './calculator/calculator.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     Bin2decComponent,
     BorderRadiusPreviewerComponent,
-    HomeComponent
+    HomeComponent,
+    CalculatorComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +34,8 @@ import { BorderRadiusPreviewerModule } from "./border-radius-previewer/border-ra
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    BorderRadiusPreviewerModule
+    BorderRadiusPreviewerModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

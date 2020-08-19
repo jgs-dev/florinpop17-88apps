@@ -1,12 +1,19 @@
 <div [formGroup]="bordersForm">
         <div [ngStyle]="getBorderRadius()" class="borders"></div>
-        <div><input (input)="setBorderTopLeftRadius()" formControlName="borderRadiusTopLeft" type="tel"
-                        placeholder="top left"></div>
-        <div><input (input)="setBorderTopRightRadius()" formControlName="borderRadiusTopRight" type="tel"
-                        placeholder="top right"></div>
-        <div><input (input)="setBorderBottomRightRadius()" formControlName="borderRadiusBottomRight" type="tel"
-                        placeholder="bottom right"></div>
-        <div><input (input)="setBorderBottomLeftRadius()" formControlName="borderRadiusBottomLeft" type="tel"
-                        placeholder="bottom left"></div>
-        <input type="range" min="0" max="150" step="1">
+
+        <label>Top left<input (input)="setBorderTopLeftRadius()" formControlName="borderRadiusTopLeft"
+                        type="range" min="0" max="300"></label>
+        <label>Top right<input (input)="setBorderTopRightRadius()" formControlName="borderRadiusTopRight"
+                        type="range" min="0" max="300"></label>
+        <label>bottom right<input (input)="setBorderBottomRightRadius()" formControlName="borderRadiusBottomRight"
+                        type="range" min="0" max="300"></label>
+        <label>bottom left<input (input)="setBorderBottomLeftRadius()" formControlName="borderRadiusBottomLeft"
+                        type="range" min="0" max="300"></label>
+
+
 </div>
+<div>
+        <label>{{copyToClipboard()}}</label>
+</div>
+
+<button [cdkCopyToClipboard]="copyToClipboard()">Copy to Clipboard</button>
