@@ -1,0 +1,18 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 300px;
+    height: 300px;
+    gap: 3px;
+}
+
+
+
+.textarea {
+    width: 298px;
+    height: 100px;
+    border: 1px solid #666;
+    outline: none;
+    overflow: hidden;
+    resize: none;
+}
