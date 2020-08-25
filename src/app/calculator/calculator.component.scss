@@ -8,11 +8,24 @@
 
 
 
-.textarea {
-    width: 298px;
-    height: 100px;
+.input {
+    width: 294px;
+    height: 30px;
     border: 1px solid #666;
+    border-top: none;    
+    outline: none;
+    overflow: hidden;
+    resize: none;
+    text-align: right;
+}
+
+.savedInput {
+    width: 294px;
+    height: 30px;
+    border: 1px solid #666;
+    border-bottom: none;    
     outline: none;
     overflow: hidden;
     resize: none;
 }
+

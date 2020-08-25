@@ -1,33 +1,30 @@
 <h2>Calculator</h2>
-<div class="textarea">
-    <textarea class="textarea" disabled></textarea>
-</div>
+
+<div><input id="savedInput" class="savedInput" disabled></div>
+<div><input id="input" class="input" disabled></div>
+
 <div class="grid-container">
-    <button>C</button>
-    <button>AC</button>
-    <button>C</button>
-    <button>AC</button>
+    
+    <button disabled></button>
+    <button (click)="clearAll()">AC</button>
+    <button (click)="clear()">C</button>
+    <button (click)="defineOperation('/')">/</button>
 
-    <button>1/x</button>
-    <button>x^2</button>
-    <button>sqrt</button>
-    <button>/</button>
-
-    <button (click)="addElement(7)">7</button>
-    <button (click)="addElement(8)">8</button>
-    <button (click)="addElement(9)">9</button>
-    <button (click)="addElement('*')">x</button>
-    <button (click)="addElement(4)">4</button>
-    <button (click)="addElement(5)">5</button>
-    <button (click)="addElement(6)">6</button>
-    <button (click)="addElement('-')">-</button>
-    <button (click)="addElement(1)">1</button>
-    <button (click)="addElement(2)">2</button>
-    <button (click)="addElement(3)">3</button>
-    <button (click)="addElement('+')">+</button>
+    <button (click)="addNumber(7)">7</button>
+    <button (click)="addNumber(8)">8</button>
+    <button (click)="addNumber(9)">9</button>
+    <button (click)="defineOperation('*')">x</button>
+    <button (click)="addNumber(4)">4</button>
+    <button (click)="addNumber(5)">5</button>
+    <button (click)="addNumber(6)">6</button>
+    <button (click)="defineOperation('-')">-</button>
+    <button (click)="addNumber(1)">1</button>
+    <button (click)="addNumber(2)">2</button>
+    <button (click)="addNumber(3)">3</button>
+    <button (click)="defineOperation('+')">+</button>
     <button>+/-</button>
-    <button (click)="addElement(0)">0</button>
-    <button (click)="addDecimal()">,</button>
-    <button>=</button>
+    <button (click)="addNumber(0)">0</button>
+    <button (click)="addDecimal()">.</button>
+    <button (click)="equal()">=</button>
 
 </div>
