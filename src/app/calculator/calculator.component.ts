@@ -23,11 +23,12 @@ export class CalculatorComponent implements OnInit {
 
     this.savedInput.value += `${this.input.value} ${symbol} `
     this.input.value = this.calculatorService.addInstruction(this.input.value, symbol)
-
+    if (this.input.value == "ERR") {
+      this.savedInput.value = ""
+    }
     if (symbol == "=") {
       this.savedInput.value += `${this.input.value} | `
     }
-
     this.flagNewNumber = true
   }
 
@@ -58,13 +59,24 @@ export class CalculatorComponent implements OnInit {
   }
 
   clear() {
-    this.input.value = "0"
+    if (this.calculatorService.getLastNumber()) {
+      this.input.value = this.calculatorService.getLastNumber()
+    } else {
+      this.input.value = "0"
+    }
+
+    this.flagNewNumber = true
   }
 
   clearAll() {
     this.savedInput.value = ""
     this.calculatorService.clearAllInstructions()
-    this.clear()
+    this.input.value = "0"
+    this.flagNewNumber = true
+  }
+
+  changeSign() {
+    this.input.value = `${-1 * parseFloat(this.input.value)}`
   }
 
 }

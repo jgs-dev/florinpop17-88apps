@@ -29,10 +29,13 @@ export class CalculatorService {
           lastNumber = (aux.pop() / lastNumber)
           break
       }
-
+      if (("" + lastNumber).length > 8) {
+        this.pileOfInstructions = []
+        return "ERR"
+      }
       this.pileOfInstructions = [lastNumber, lastOperation]
       return lastNumber
-      
+
     }
   }
 
@@ -52,5 +55,8 @@ export class CalculatorService {
 
   clearAllInstructions() {
     this.pileOfInstructions = []
+  }
+  getLastNumber() {
+    return this.pileOfInstructions[this.pileOfInstructions.length - 2]
   }
 }
