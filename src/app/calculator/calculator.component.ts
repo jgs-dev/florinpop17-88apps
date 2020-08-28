@@ -7,147 +7,64 @@ import { CalculatorService } from "./../services/calculator.service"
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements OnInit {
+  input: HTMLInputElement
+  savedInput: HTMLInputElement
 
-  savedInput: number
+  flagDecimal: boolean
   flagNewNumber: boolean
-  flagEqual: boolean
-  /**
-   * @var operationToDo will save which operation the calculator needs to do after an operation is pushed 
-   */
-  operationToDo
-  /**
-   * @var inputElement 
-   */
-  inputElement: HTMLInputElement
-
-  /**
-   * @var savedInputElement
-   */
-  savedInputElement: HTMLInputElement
-
-
   constructor(private calculatorService: CalculatorService) { }
 
-
   ngOnInit() {
-    this.inputElement = <HTMLInputElement>document.getElementById("input")
-    this.savedInputElement = <HTMLInputElement>document.getElementById("savedInput")
-    this.operationToDo = () => { false }
-  }
-
-  /**
-   * @method addNumber will add the input number in the display of the calculator, if there's
-   * a flag for a new number (after an operation has been pushed) it will save the number on top
-   * of the display and erase the input for the new number
-   * @param number number that the user clicked in the interface
-   */
-  addNumber(number: number) {
-    if (this.flagEqual) {
-      this.savedInputElement.value = ""
-      this.setSavedInput(0)
-      this.flagEqual = false
-    }
-
-    if (this.flagNewNumber) {
-      this.inputElement.value = "" + number
-      this.flagNewNumber = false
-    } else {
-      if (this.inputElement.value.length < 8) {
-        this.inputElement.value += number
-      }
-    }
+    this.input = <HTMLInputElement>document.getElementById("input")
+    this.savedInput = <HTMLInputElement>document.getElementById("savedInput")
   }
 
   defineOperation(symbol: string) {
-    if (this.flagEqual) {
-      this.saveInputAfterEqual(symbol)
-    } else {
-      this.saveInput(symbol)
+
+    this.savedInput.value += `${this.input.value} ${symbol} `
+    this.input.value = this.calculatorService.addInstruction(this.input.value, symbol)
+
+    if (symbol == "=") {
+      this.savedInput.value += `${this.input.value} | `
     }
 
-    if (!this.getSavedInput()) {
-      this.setSavedInput(parseFloat(this.inputElement.value))
-    }
-
-    this.operationToDo()
-
-    switch (symbol) {
-      case "+":
-        this.operationToDo = this.add
-        break
-      case "-":
-        this.operationToDo = this.subtract
-        break
-      case "*":
-        this.operationToDo = this.multiply
-        break
-      case "/":
-        this.operationToDo = this.divide
-        break
-    }
-  }
-  saveInputAfterEqual(symbol: string) {
-    this.savedInputElement.value = `${this.inputElement.value} ${symbol} `
-    this.flagEqual = false
-  }
-
-  saveInput(symbol: string) {
-    this.savedInputElement.value += `${this.inputElement.value} ${symbol} `
     this.flagNewNumber = true
   }
 
-  add() {
-    this.setSavedInput(this.savedInput + parseFloat(this.inputElement.value))
-    this.inputElement.value = "" + this.getSavedInput()
-  }
-
-  subtract() {
-    this.setSavedInput(this.savedInput - parseFloat(this.inputElement.value))
-    this.inputElement.value = "" + this.getSavedInput()
-  }
-
-  divide() {
-    this.setSavedInput(this.savedInput / parseFloat(this.inputElement.value))
-    this.inputElement.value = "" + this.getSavedInput()
-  }
-
-  multiply() {
-    this.setSavedInput(this.savedInput * parseFloat(this.inputElement.value))
-    this.inputElement.value = "" + this.getSavedInput()
-  }
-
-  equal() {
-    this.savedInputElement.value += `${this.inputElement.value} = `
-    this.operationToDo()
-    this.flagNewNumber = true;
-    this.flagEqual = true
-    this.operationToDo = () => { false }
-  }
-
   addDecimal() {
-    if (![...this.inputElement.value].includes(".")) {
-      this.inputElement.value += "."
+    if (this.flagNewNumber) {
+      this.input.value = "0."
+      this.flagNewNumber = false
+      this.flagDecimal = true
+    } else if (!this.input.value.includes(".")) {
+      if (this.input.value == "") {
+        this.input.value = "0."
+      }
+      this.flagDecimal = true
+    }
+  }
+
+  addNumber(number: number) {
+    if (this.input.value == "0" || this.flagNewNumber) {
+      this.input.value = `${number}`
+      this.flagNewNumber = false
+    } else if (this.flagDecimal) {
+      if (this.input.value.length - 1 - this.input.value.indexOf(".") < 3) {
+        this.input.value += number
+      }
+    } else if (this.input.value.length < 8) {
+      this.input.value += number
     }
   }
 
   clear() {
-
+    this.input.value = "0"
   }
 
   clearAll() {
-
-  }
-
-  setSavedInput(savedInput: number) {
-    this.savedInput = savedInput
-  }
-
-  getSavedInput(): number {
-    return this.savedInput
-  }
-
-  clearSavedInput() {
-    this.savedInput = null
+    this.savedInput.value = ""
+    this.calculatorService.clearAllInstructions()
+    this.clear()
   }
 
 }
