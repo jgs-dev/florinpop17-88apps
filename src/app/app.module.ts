@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component'
 import { BorderRadiusPreviewerModule } from "./border-radius-previewer/border-radius-previewer.module"
 
 import { CalculatorComponent } from './calculator/calculator.component';
+import { ChristmasLightsComponent } from './christmas-lights/christmas-lights.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { CalculatorComponent } from './calculator/calculator.component';
     Bin2decComponent,
     BorderRadiusPreviewerComponent,
     HomeComponent,
-    CalculatorComponent
+    CalculatorComponent,
+    ChristmasLightsComponent
   ],
   imports: [
     BrowserModule,
